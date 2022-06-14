@@ -1,4 +1,5 @@
-let changeColor = document.getElementById("changeColor");
+let sendButton = document.getElementById("send");
+let statusText = document.getElementById("status");
 
 let apiKey = ""
 let urlToSend =""
@@ -14,7 +15,7 @@ chrome.tabs.getSelected(null, function(tab) {
 //});
 
 // When the button is clicked, inject setPageBackgroundColor into current page
-changeColor.addEventListener("click", async () => {
+sendButton.addEventListener("click", async () => {
     // Send the pages to mantier
     const object = { url: urlToSend };
     const response = await fetch('https://mantiser.com/api/shoot', {
@@ -26,6 +27,13 @@ changeColor.addEventListener("click", async () => {
     },
   });
   const responseText =  await response.text();
+  
+  if (response.ok){
+    statusText.textContent = "The pages is saved at mantiser "+ urlToSend;
+  }
+  else{
+    statusText.textContent = "We got an error check your key and options";
+  }
   console.log(responseText); // logs 'OK'
 
 

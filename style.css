@@ -1,0 +1,16 @@
+body {
+    background-color: beige;
+
+}
+h3 {
+    font-size:13px
+}
+
+button {
+
+    outline: none;
+    margin: 10px;
+    border: none;
+    border-radius: 2px;
+  }
+  
